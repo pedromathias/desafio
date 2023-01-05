@@ -19,13 +19,13 @@ export const CardSkills = ({ name, image, id }) => {
     setUserId(a);
   };
 
-  //   useEffect(() => {
-  //     handleUserId();
-  //   });
+    useEffect(() => {
+      handleUserId();
+    });
 
   const Postskilluser = {
     knowledgeLevel: 0,
-    user: 10001,
+    user: userId,
     createdAt: getCurrentDate(),
     skill: id,
   };

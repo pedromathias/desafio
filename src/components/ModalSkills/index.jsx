@@ -1,6 +1,7 @@
 import localStorage from "local-storage";
 import { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
+import { useNavigation } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
 import { getSkills } from "../../services/apiSkills";
 import { CardSkills } from "../CardSkills";
@@ -14,10 +15,12 @@ export const ModalSkills = ({ modalIsOpen, closeModal }) => {
 
   const { auth } = useContext(AuthContext);
   const { setAuth } = useContext(AuthContext);
+  const navigate = useNavigation()
 
   const LogOut = () => {
     localStorage.clear();
     setAuth(false);
+    navigate("/")
   };
 
   useEffect(() => {
@@ -45,14 +48,15 @@ export const ModalSkills = ({ modalIsOpen, closeModal }) => {
       }}
     >
         <div>
-      {skillsData.map((item) => (
+            <button onClick={LogOut} >Sair</button>
+      {/* {skillsData.map((item) => (
         <Content key={item.id}>
           <CardSkills id={item.id} name={item.name} image={item.imageUrl} />
         
           </Content>
           
         )
-      )}
+      )} */}
       </div>
     </Modal>
   );

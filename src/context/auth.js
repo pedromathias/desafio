@@ -1,20 +1,16 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, { createContext, useState } from "react";
+import { Route } from "react-router-dom";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
-  const [auth, setAuth] = useState();
-
-  useEffect(() => {
-    // loadStorageData();
-  }, []);
-
-  
-
+function AuthProvider({ children }) {
+  const [auth, setAuth] = useState(false);
+console.log(auth);
   return (
-    <AuthContext.Provider value={{auth, setAuth}}>
+    <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
+export default AuthProvider;

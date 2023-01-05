@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { AuthContext } from "../../context/auth";
 import { Container, Content } from "./style";
@@ -9,6 +10,7 @@ export function Cadastro() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
 
   const { auth } = useContext(AuthContext);
   const { setAuth } = useContext(AuthContext);
@@ -41,6 +43,7 @@ export function Cadastro() {
         setPassword("");
         setPasswordConfirm("");
         setAuth(true);
+        navigate("/home")
       }
       await localStorage.setItem("id", JSON.stringify(response.data));
       const id = await localStorage.getItem("id");
